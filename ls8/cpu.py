@@ -43,6 +43,11 @@ class CPU:
         self.alu("MUL", op_a, op_b)
         return (3, True)
 
+    def add(self, op_a, op_b):
+        # call alu
+        self.alu("ADD", op_a, op_b)
+        return (3, True)
+
     def load(self, program):
         """Load a program into memory."""
 
