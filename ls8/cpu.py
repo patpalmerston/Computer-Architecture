@@ -10,12 +10,14 @@ class CPU:
         """Construct a new CPU."""
         self.ram = [0] * 256
         self.reg = [0] * 8
-        self.pc = self.reg[0]
+        self.pc = 0
         self.commands = {
             0b00000001: self.hlt,
             0b10000010: self.ldi,
             0b01000111: self.prn,
-            0b10100010: self.mul
+            0b10100010: self.mul,
+            0b01000101: self.push,
+            0b01000110: self.pop
         }
     # takes the address of RAM returns that value
 
@@ -47,6 +49,18 @@ class CPU:
         # call alu
         self.alu("ADD", op_a, op_b)
         return (3, True)
+
+    # push
+    def push(self, op_a, op_b):
+        pass
+
+    # pop
+    def pop(self, op_a, op_b):
+        pass
+
+    # call
+
+    # iret
 
     def load(self, program):
         """Load a program into memory."""
