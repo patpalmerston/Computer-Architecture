@@ -11,6 +11,8 @@ class CPU:
         self.ram = [0] * 256
         self.reg = [0] * 8
         self.pc = 0
+        # stack pointer
+        self.sp = 256
         self.commands = {
             0b00000001: self.hlt,
             0b10000010: self.ldi,
@@ -52,7 +54,11 @@ class CPU:
 
     # push
     def push(self, op_a, op_b):
-        pass
+        push_reg = self.ram[self.pc + 1]
+        self.pc -= 1
+        val = self.reg[push_reg]
+        self.ram[self.sp] = val
+        return (2, True)
 
     # pop
     def pop(self, op_a, op_b):
